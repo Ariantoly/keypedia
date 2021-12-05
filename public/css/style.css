@@ -1,0 +1,11 @@
+.container {
+    min-height: 90vh;
+}
+
+.box {
+    margin: 0 14vw;
+}
+
+.img-small {
+    width: 20vw;
+}
