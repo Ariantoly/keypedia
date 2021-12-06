@@ -9,7 +9,7 @@
         </div>
         <hr class="text-primary">
         <div class="px-4 mx-4">
-            <div class="row g-5 align-items-center mb-3 mx-5">
+            <div class="row gx-5 align-items-center mb-3 mx-5">
                 <div class="col-4 text-end">
                     <label for="txtEmail" class="form-label">E-Mail Address</label>
                 </div>
@@ -17,7 +17,7 @@
                     <input type="email" class="form-control" id="txtEmail" name="email">
                 </div>
             </div>
-            <div class="row g-5 align-items-center mb-3 mx-5">
+            <div class="row gx-5 align-items-center mb-3 mx-5">
                 <div class="col-4 text-end">
                     <label for="txtPassword" class="form-label">Password</label>
                 </div>
@@ -25,7 +25,7 @@
                     <input type="password" class="form-control" id="txtPassword" name="password">
                 </div>
             </div>
-            <div class="row g-5 align-items-center mb-3 mx-5">
+            <div class="row gx-5 align-items-center mb-3 mx-5">
                 <div class="col-4">
                     
                 </div>
@@ -36,7 +36,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row g-5 align-items-center mx-5">
+            <div class="row gx-5 align-items-center mx-5">
                 <div class="col-4">
                     
                 </div>

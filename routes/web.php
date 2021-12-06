@@ -46,3 +46,23 @@ Route::get('/addKeyboard', function() {
 Route::get('/manageCategory', function() {
     return view('manage_category');
 });
+
+Route::get('/updateCategory', function() {
+    return view('update_category');
+});
+
+Route::get('/cart', function() {
+    return view('cart');
+});
+
+Route::get('/changePassword', function() {
+    return view('change_password');
+});
+
+Route::get('/transaction', function() {
+    return view('transaction');
+});
+
+Route::get('/transactionDetail', function() {
+    return view('transaction_detail');
+});

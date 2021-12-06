@@ -18,6 +18,7 @@
                 <p>Brand: GameKey, Name: Mechanical Gaming Keyboard, Model: K87, Key: 87 Keys, Backlight: RGB Backlight</p>
                 <div class="d-flex justify-content-center">
                     <form action="/addCart" method="post">
+                        @csrf
                         <div class="row gx-5 align-items-center mb-3 mx-4">
                             <div class="col-3 text-end">
                                 <label for="txtQty" class="form-label">Quantity</label>
