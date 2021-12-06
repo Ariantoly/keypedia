@@ -6,5 +6,11 @@ use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    //
+    public function index() {
+        return view('transaction');
+    }
+
+    public function getTransaction() {
+        return view('transaction_detail');
+    }
 }
