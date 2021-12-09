@@ -11,9 +11,9 @@
                       Categories
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        @foreach ($categories as $c)
+                            <li><a class="dropdown-item" href="/category/{{ $c->id }}">{{ $c->name }}</a></li>
+                        @endforeach
                     </ul>
                 </li>
                 <li class="nav-item dropdown">

@@ -15,7 +15,14 @@ class CreateKeyboardsTable extends Migration
     {
         Schema::create('keyboards', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('category_id');
+            $table->string('name');
+            $table->string('price');
+            $table->longText('description');
+            $table->string('image');
             $table->timestamps();
+
+            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -31,7 +31,7 @@ Route::get('/register', [RegisterController::class, 'index']);
 
 Route::get('/changePassword', [ChangePasswordController::class, 'index']);
 
-Route::get('/category', [CategoryController::class, 'index']);
+Route::get('/category/{id}', [CategoryController::class, 'index']);
 
 Route::get('/manageCategory', [CategoryController::class, 'manage']);
 
@@ -42,6 +42,7 @@ Route::get('/keyboard', [KeyboardController::class, 'index']);
 Route::get('/updateKeyboard', [KeyboardController::class, 'showUpdateForm']);
 
 Route::get('/addKeyboard', [KeyboardController::class, 'showAddForm']);
+Route::post('/addKeyboard', [KeyboardController::class, 'add']);
 
 Route::get('/cart', [CartController::class, 'index']);
 
