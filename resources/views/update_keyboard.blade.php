@@ -10,10 +10,10 @@
         <hr class="text-primary">
         <div class="d-flex mx-4">
             <div class="me-2">
-                <img src="images/keyboard.jpg" alt="Keyboard" class="img-small">
+                <img src="{{ Storage::url($keyboard->image) }}" alt="Keyboard" class="img-small">
             </div>
             <div>
-                <form action="/updateKeyboard" method="post">
+                <form action="/updateKeyboard/{{ $keyboard->id }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <div class="row gx-4 align-items-center mb-3">
@@ -21,12 +21,17 @@
                             <label class="form-label">Category</label>
                         </div>
                         <div class="col-7">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Choose a category</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="form-select" aria-label="Default select example" name="category">
+                                <option value="">Choose a category</option>
+                                @foreach ($categories as $c)
+                                    <option value="{{ $c->id }}" @if($c->id == $keyboard->category_id) selected @endif>{{ $c->name }}</option>
+                                @endforeach
                             </select>
+                            @if($errors->first('category'))
+                                <div class="alert alert-danger mt-2 p-1">
+                                    {{ $errors->first('category') }}
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="row gx-4 align-items-center mb-3">
@@ -34,7 +39,12 @@
                             <label for="txtName" class="form-label">Keyboard Name</label>
                         </div>
                         <div class="col-7">
-                            <input type="text" class="form-control" id="txtName" name="name">
+                            <input type="text" class="form-control" id="txtName" name="name" value="{{ $keyboard->name }}">
+                            @if($errors->first('name'))
+                                <div class="alert alert-danger mt-2 p-1">
+                                    {{ $errors->first('name') }}
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="row gx-4 align-items-center mb-3">
@@ -42,7 +52,12 @@
                             <label for="txtPrice" class="form-label">Keyboard Price (USD)</label>
                         </div>
                         <div class="col-7">
-                            <input type="number" class="form-control" id="txtPrice" name="price">
+                            <input type="number" class="form-control" id="txtPrice" name="price" value="{{ $keyboard->price }}">
+                            @if($errors->first('price'))
+                                <div class="alert alert-danger mt-2 p-1">
+                                    {{ $errors->first('price') }}
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="row gx-4 align-items-center mb-3">
@@ -50,7 +65,12 @@
                             <label for="txtDescription" class="form-label">Description</label>
                         </div>
                         <div class="col-7">
-                            <textarea class="form-control" id="txtDescription" name="description" rows="5"></textarea>
+                            <textarea class="form-control" id="txtDescription" name="description" rows="5">{{ $keyboard->description }}</textarea>
+                            @if($errors->first('description'))
+                                <div class="alert alert-danger mt-2 p-1">
+                                    {{ $errors->first('description') }}
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="row gx-4 align-items-center mb-3">
@@ -59,6 +79,11 @@
                         </div>
                         <div class="col-7">
                             <input class="form-control" type="file" id="fileImage" name="image">
+                            @if($errors->first('image'))
+                                    <div class="alert alert-danger mt-2 p-1">
+                                        {{ $errors->first('image') }}
+                                    </div>
+                            @endif
                         </div>
                     </div>
                     <div class="row gx-4 align-items-center">

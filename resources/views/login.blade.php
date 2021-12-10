@@ -4,6 +4,7 @@
     
 @section('content')
     <form method="post" action="/login" class="box bg-light shadow py-3 rounded-2">
+        @csrf
         <div class="mx-4">
             <h4>Login</h4>
         </div>

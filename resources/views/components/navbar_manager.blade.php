@@ -22,7 +22,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="/addKeyboard">Add Keyboard</a></li>
-                        <li><a class="dropdown-item" href="/manageCategories">Manage Categories</a></li>
+                        <li><a class="dropdown-item" href="/manageCategory">Manage Categories</a></li>
                         <li><a class="dropdown-item" href="/changePassword">Change Password</a></li>
                         <li><a class="dropdown-item" href="/logout">Logout</a></li>
                     </ul>

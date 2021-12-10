@@ -21,8 +21,8 @@
                       USER
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="/myCart">My Cart</a></li>
-                        <li><a class="dropdown-item" href="/transactionHistory">Transaction History</a></li>
+                        <li><a class="dropdown-item" href="/cart">My Cart</a></li>
+                        <li><a class="dropdown-item" href="/transaction">Transaction History</a></li>
                         <li><a class="dropdown-item" href="/changePassword">Change Password</a></li>
                         <li><a class="dropdown-item" href="/logout">Logout</a></li>
                     </ul>

@@ -24,10 +24,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
-
 Route::post('/login', [LoginController::class, 'login']);
 
-Route::get('/register', [RegisterController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'register']);
 
 Route::get('/changePassword', [ChangePasswordController::class, 'index']);
 
@@ -35,14 +35,20 @@ Route::get('/category/{id}', [CategoryController::class, 'index']);
 
 Route::get('/manageCategory', [CategoryController::class, 'manage']);
 
-Route::get('/updateCategory', [CategoryController::class, 'showUpdateForm']);
+Route::get('/updateCategory/{id}', [CategoryController::class, 'showUpdateForm']);
+Route::put('/updateCategory/{id}', [CategoryController::class, 'update']);
+
+Route::delete('/deleteCategory/{id}', [CategoryController::class, 'delete']);
 
 Route::get('/keyboard', [KeyboardController::class, 'index']);
 
-Route::get('/updateKeyboard', [KeyboardController::class, 'showUpdateForm']);
-
 Route::get('/addKeyboard', [KeyboardController::class, 'showAddForm']);
 Route::post('/addKeyboard', [KeyboardController::class, 'add']);
+
+Route::get('/updateKeyboard/{id}', [KeyboardController::class, 'showUpdateForm']);
+Route::put('/updateKeyboard/{id}', [KeyboardController::class, 'update']);
+
+Route::delete('/deleteKeyboard/{id}', [KeyboardController::class, 'delete']);
 
 Route::get('/cart', [CartController::class, 'index']);
 

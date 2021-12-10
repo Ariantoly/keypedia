@@ -10,10 +10,10 @@
         <hr class="text-primary">
         <div class="d-flex mx-4">
             <div class="me-2">
-                <img src="images/keyboard.jpg" alt="Keyboard" class="img-small">
+                <img src="{{ Storage::url($category->image) }}" alt="Keyboard" class="img-small">
             </div>
             <div>
-                <form action="/updateCategory" method="post">
+                <form action="/updateCategory/{{ $category->id }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <div class="row gx-4 align-items-center mb-3">
@@ -21,7 +21,7 @@
                             <label for="txtName" class="form-label">Category Name</label>
                         </div>
                         <div class="col-7">
-                            <input type="text" class="form-control" id="txtName" name="name">
+                            <input type="text" class="form-control" id="txtName" name="name" value="{{ $category->name }}">
                         </div>
                     </div>
                     <div class="row gx-4 align-items-center mb-3">

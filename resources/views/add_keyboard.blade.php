@@ -38,7 +38,7 @@
                     <label for="txtName" class="form-label">Keyboard Name</label>
                 </div>
                 <div class="col-8">
-                    <input type="text" class="form-control" id="txtName" name="name">
+                    <input type="text" class="form-control" id="txtName" name="name" value="{{ old('name') }}">
                     @if($errors->first('name'))
                         <div class="alert alert-danger mt-2 p-1">
                             {{ $errors->first('name') }}
@@ -51,7 +51,7 @@
                     <label for="txtPrice" class="form-label">Keyboard Price (USD)</label>
                 </div>
                 <div class="col-8">
-                    <input type="number" class="form-control" id="txtPrice" name="price">
+                    <input type="number" class="form-control" id="txtPrice" name="price" value="{{ old('price') }}">
                     @if($errors->first('price'))
                         <div class="alert alert-danger mt-2 p-1">
                             {{ $errors->first('price') }}
@@ -64,7 +64,7 @@
                     <label for="txtDescription" class="form-label">Description</label>
                 </div>
                 <div class="col-8">
-                    <textarea class="form-control" id="txtDescription" name="description" rows="5"></textarea>
+                    <textarea class="form-control" id="txtDescription" name="description" rows="5">{{ old('description') }}</textarea>
                     @if($errors->first('description'))
                         <div class="alert alert-danger mt-2 p-1">
                             {{ $errors->first('description') }}
@@ -78,6 +78,11 @@
                 </div>
                 <div class="col-8">
                     <input class="form-control" type="file" id="fileImage" name="image">
+                    @if($errors->first('image'))
+                            <div class="alert alert-danger mt-2 p-1">
+                                {{ $errors->first('image') }}
+                            </div>
+                    @endif
                 </div>
             </div>
             <div class="row g-5 align-items-center mx-5">

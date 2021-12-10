@@ -15,7 +15,7 @@
                     <label for="txtUsername" class="form-label">Username</label>
                 </div>
                 <div class="col-8">
-                    <input type="text" class="form-control" id="txtUsername" name="username">
+                    <input type="text" class="form-control" id="txtUsername" name="username" value="{{ old('username') }}">
                 </div>
             </div>
             <div class="row gx-5 align-items-center mb-3 mx-5">
@@ -23,7 +23,7 @@
                     <label for="txtEmail" class="form-label">E-Mail Address</label>
                 </div>
                 <div class="col-8">
-                    <input type="email" class="form-control col-auto" id="txtEmail" name="email">
+                    <input type="email" class="form-control col-auto" id="txtEmail" name="email" value="{{ old('email') }}">
                 </div>
             </div>
             <div class="row gx-5 align-items-center mb-3 mx-5">
@@ -31,7 +31,7 @@
                     <label for="txtPassword" class="form-label">Password</label>
                 </div>
                 <div class="col-8">
-                    <input type="password" class="form-control" id="txtPassword" name="password">
+                    <input type="password" class="form-control" id="txtPassword" name="password" value="{{ old('password') }}">
                 </div>
             </div>
             <div class="row gx-5 align-items-center mb-3 mx-5">
@@ -39,7 +39,7 @@
                     <label for="txtConfPass" class="form-label">Confirm Password</label>
                 </div>
                 <div class="col-8">
-                    <input type="password" class="form-control" id="txtConfPass" name="confPass">
+                    <input type="password" class="form-control" id="txtConfPass" name="password_confirmation" value="{{ old('password_confirmation') }}">
                 </div>
             </div>
             <div class="row gx-5 align-items-center mb-3 mx-5">
@@ -47,7 +47,7 @@
                     <label for="txtAddress" class="form-label">Address</label>
                 </div>
                 <div class="col-8">
-                    <textarea class="form-control" id="txtAddress" name="address"></textarea>
+                    <textarea class="form-control" id="txtAddress" name="address">{{ old('address') }}</textarea>
                 </div>
             </div>
             <div class="row gx-5 align-items-center mb-3 mx-5">
@@ -56,13 +56,13 @@
                 </div>
                 <div class="col-8 d-flex flex-row">
                     <div class="form-check me-3">
-                            <input class="form-check-input" type="radio" name="gender" id="rbtMale">
+                            <input class="form-check-input" type="radio" name="gender" id="rbtMale" value="Male">
                             <label class="form-check-label" for="rbtMale">
                             Male
                             </label>
                     </div>
                     <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="rbtFemale">
+                            <input class="form-check-input" type="radio" name="gender" id="rbtFemale" value="Female">
                             <label class="form-check-label" for="rbtFemale">
                             Female
                             </label>
@@ -74,7 +74,7 @@
                     <label for="txtdob" class="form-label">Date of Birth</label>
                 </div>
                 <div class="col-8">
-                    <input type="text" class="form-control" id="txtdob" name="dob" placeholder="2021-06-01">
+                    <input type="text" class="form-control" id="txtdob" name="dob" placeholder="2021-06-01" value="{{ old('dob') }}">
                 </div>
             </div>
             <div class="row gx-5 align-items-center mx-5">

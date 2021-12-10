@@ -17,7 +17,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title text-center text-decoration-none">{{ $c->name }}</h5>
                                 </div>
-                                <img src="{{ $c->image }}" class="card-img-top" alt="Keyboard">
+                                <img src="{{ Storage::url($c->image) }}" class="card-img-top" alt="Keyboard">
                             </div>
                         </div>
                     </a>

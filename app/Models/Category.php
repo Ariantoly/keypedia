@@ -10,6 +10,6 @@ class Category extends Model
     use HasFactory;
 
     public function keyboards() {
-        return $this->belongsTo(Keyboard::class);
+        return $this->hasMany(Keyboard::class, 'category_id', 'id');
     }
 }
