@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index() {
+    public static function index() {
         $categories = Category::all();
         $user = User::Where('role_id', 2)->first();
 

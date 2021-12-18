@@ -10,27 +10,27 @@ use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
-    public function index($id) {
+    public static function index($id) {
         $categories = Category::all();
         $category = Category::find($id);
         
         return view('category', ['categories' => $categories, 'category' => $category]);
     }
 
-    public function manage() {
+    public static function manage() {
         $categories = Category::all();
 
         return view('manage_category', ['categories' => $categories]);
     }
 
-    public function showUpdateForm($id) {
+    public static function showUpdatePage($id) {
         $categories = Category::all();
         $category = Category::find($id);
 
         return view('update_category', ['categories' => $categories, 'category' => $category]);
     }
 
-    public function update(Request $request, $id) {
+    public static function update(Request $request, $id) {
         $request->validate([
             'name' => ['required', 'min:5', Rule::unique('categories')->ignore($id)],
             'image' => 'nullable|image'
@@ -51,10 +51,10 @@ class CategoryController extends Controller
 
         $category->save();
 
-        return redirect('manageCategory');
+        return redirect()->route('manage');
     }
 
-    public function delete($id) {
+    public static function delete($id) {
         $category = Category::find($id);
 
         // Storage::delete('public/'.$category->image);

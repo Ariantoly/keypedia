@@ -18,13 +18,18 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Manager
+                      {{ Auth::user()->username }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="/addKeyboard">Add Keyboard</a></li>
                         <li><a class="dropdown-item" href="/manageCategory">Manage Categories</a></li>
                         <li><a class="dropdown-item" href="/changePassword">Change Password</a></li>
-                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                        <li>
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <button class="dropdown-item btn btn-link" type="submit">Logout</button>
+                            </form>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">

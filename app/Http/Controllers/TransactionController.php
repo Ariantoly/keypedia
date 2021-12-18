@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    public function index() {
+    public static function index() {
         $categories = Category::all();
 
         return view('transaction', ['categories' => $categories]);
     }
 
-    public function getTransaction() {
+    public static function getTransaction() {
         $categories = Category::all();
 
         return view('transaction_detail', ['categories' => $categories]);

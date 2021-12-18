@@ -12,4 +12,12 @@ class Keyboard extends Model
     public function category() {
         return $this->belongsTo(Category::class);
     }
+
+    public function cartDetails() {
+        return $this->belongsTo(CartDetail::class, 'keyboard_id', 'id');
+    }
+
+    public function transactionDetails() {
+        return $this->belongsTo(TransactionDetail::class);
+    }
 }

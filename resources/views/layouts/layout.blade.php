@@ -9,9 +9,15 @@
     </head>
     
     <body class="bg-info">
-        @include('components.navbar_guest')
-        {{-- @include('components.navbar_customer')
-        @include('components.navbar_manager') --}}
+        @auth
+            @if (strcmp(Auth::user()->role->name, 'Customer') == 0)
+                @include('components.navbar_customer')
+            @else        
+                @include('components.navbar_manager')
+            @endif
+        @else
+            @include('components.navbar_guest')
+        @endif
 
         <div class="container py-5 px-5">
             @yield('content')

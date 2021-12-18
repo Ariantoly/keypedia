@@ -1,12 +1,10 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KeyboardController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,37 +19,42 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
-Route::post('/login', [LoginController::class, 'login']);
+Route::get('/login', [AuthController::class, 'showLoginPage'])->name('login')->middleware('guest');
+Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/register', [AuthController::class, 'showRegisterPage'])->name('register')->middleware('guest');
+Route::post('/register', [AuthController::class, 'register']);
 
-Route::get('/changePassword', [ChangePasswordController::class, 'index']);
+Route::post('/logout', [AuthController::class, 'logout']);
+
+Route::get('/changePassword', [AuthController::class, 'showChangePasswordPage'])->middleware('auth');
 
 Route::get('/category/{id}', [CategoryController::class, 'index']);
 
-Route::get('/manageCategory', [CategoryController::class, 'manage']);
+Route::get('/manageCategory', [CategoryController::class, 'manage'])->name('manage')->middleware('auth')->middleware('auth.role:Manager');
 
-Route::get('/updateCategory/{id}', [CategoryController::class, 'showUpdateForm']);
+Route::get('/updateCategory/{id}', [CategoryController::class, 'showUpdatePage'])->middleware('auth')->middleware('auth.role:Manager');
 Route::put('/updateCategory/{id}', [CategoryController::class, 'update']);
 
 Route::delete('/deleteCategory/{id}', [CategoryController::class, 'delete']);
 
-Route::get('/keyboard', [KeyboardController::class, 'index']);
+Route::get('/keyboard/{id}', [KeyboardController::class, 'index'])->name('keyboard');
 
-Route::get('/addKeyboard', [KeyboardController::class, 'showAddForm']);
+Route::get('/addKeyboard', [KeyboardController::class, 'showAddPage'])->middleware('auth')->middleware('auth.role:Manager');
 Route::post('/addKeyboard', [KeyboardController::class, 'add']);
 
-Route::get('/updateKeyboard/{id}', [KeyboardController::class, 'showUpdateForm']);
+Route::get('/updateKeyboard/{id}', [KeyboardController::class, 'showUpdatePage'])->middleware('auth')->middleware('auth.role:Manager');
 Route::put('/updateKeyboard/{id}', [KeyboardController::class, 'update']);
 
 Route::delete('/deleteKeyboard/{id}', [KeyboardController::class, 'delete']);
 
-Route::get('/cart', [CartController::class, 'index']);
+Route::get('/cart', [CartController::class, 'index'])->name('cart')->middleware('auth')->middleware('auth.role:Customer');
+Route::post('/addCart/{id}', [CartController::class, 'addCart'])->middleware('auth')->middleware('auth.role:Customer');
+Route::put('/updateCart/{id}', [CartController::class, 'updateCart']);
+Route::delete('/deleteCart', [CartController::class, 'deleteCart']);
 
-Route::get('/transaction', [TransactionController::class, 'index']);
+Route::get('/transaction', [TransactionController::class, 'index'])->middleware('auth')->middleware('auth.role:Customer');
 
-Route::get('/transactionDetail', [TransactionController::class, 'getTransaction']);
+Route::get('/transactionDetail', [TransactionController::class, 'getTransaction'])->middleware('auth')->middleware('auth.role:Customer');

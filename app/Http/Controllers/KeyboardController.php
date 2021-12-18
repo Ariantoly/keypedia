@@ -9,26 +9,27 @@ use Illuminate\Support\Facades\Storage;
 
 class KeyboardController extends Controller
 {
-    public function index() {
+    public static function index($id) {
         $categories = Category::all();
+        $keyboard = Keyboard::find($id);
 
-        return view('keyboard', ['categories' => $categories]);
+        return view('keyboard', ['categories' => $categories, 'keyboard' => $keyboard]);
     }
 
-    public function showUpdateForm($id) {
+    public static function showUpdatePage($id) {
         $categories = Category::all();
         $keyboard = Keyboard::find($id);
 
         return view('update_keyboard', ['categories' => $categories, 'keyboard' => $keyboard]);
     }
 
-    public function showAddForm() {
+    public static function showAddPage() {
         $categories = Category::all();
 
         return view('add_keyboard', ['categories' => $categories]);
     }
 
-    public function add(Request $request) {
+    public static function add(Request $request) {
         $request->validate([
             'category' => 'required|different:nullable',
             'name' => 'required|min:5|unique:App\Models\Keyboard,name',
@@ -54,7 +55,7 @@ class KeyboardController extends Controller
         return redirect()->back();
     }
 
-    public function update(Request $request, $id) {
+    public static function update(Request $request, $id) {
         $request->validate([
             'category' => 'required|different:nullable',
             'name' => 'required|min:5',
@@ -81,10 +82,10 @@ class KeyboardController extends Controller
 
         $keyboard->save();
 
-        return redirect('category/'.$keyboard->category_id);
+        return redirect()->route('category');
     }
 
-    public function delete($id) {
+    public static function delete($id) {
         $keyboard = Keyboard::find($id);
 
         // Storage::delete('public/'.$keyboard->image);
