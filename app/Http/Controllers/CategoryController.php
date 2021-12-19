@@ -13,8 +13,25 @@ class CategoryController extends Controller
     public static function index($id) {
         $categories = Category::all();
         $category = Category::find($id);
+        $keyboards = $category->keyboards()->paginate(8);
         
-        return view('category', ['categories' => $categories, 'category' => $category]);
+        return view('category', ['categories' => $categories, 'category' => $category, 'keyboards' => $keyboards]);
+    }
+
+    public static function search(Request $request, $id) {
+        $categories = Category::all();
+        $category = Category::find($id);
+
+        $search = $request->search;
+        
+        if(strcmp($request->type, 'name') == 0) {
+            $keyboards = $category->keyboards()->where('name', 'like', "%$search%")->paginate(8);
+        }
+        else {
+            $keyboards = $category->keyboards()->where('price', intval($request->search))->paginate(8);
+        }
+
+        return view('category', ['categories' => $categories, 'category' => $category, 'keyboards' => $keyboards]);
     }
 
     public static function manage() {

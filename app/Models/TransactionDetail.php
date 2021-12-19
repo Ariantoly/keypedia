@@ -9,7 +9,13 @@ class TransactionDetail extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'transaction_id';
+
     public function transactionHeader() {
         return $this->belongsTo(TransactionHeader::class);
+    }
+
+    public function product() {
+        return $this->hasOne(Keyboard::class);
     }
 }

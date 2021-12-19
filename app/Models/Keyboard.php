@@ -13,11 +13,11 @@ class Keyboard extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function cartDetails() {
-        return $this->belongsTo(CartDetail::class, 'keyboard_id', 'id');
+    public function carts() {
+        return $this->belongsToMany(CartDetail::class, 'cart_details', 'keyboard_id', 'id');
     }
 
     public function transactionDetails() {
-        return $this->belongsTo(TransactionDetail::class);
+        return $this->belongsToMany(TransactionDetail::class);
     }
 }

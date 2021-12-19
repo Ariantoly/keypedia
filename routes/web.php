@@ -32,6 +32,7 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::get('/changePassword', [AuthController::class, 'showChangePasswordPage'])->middleware('auth');
 
 Route::get('/category/{id}', [CategoryController::class, 'index']);
+Route::get('/category/keyboard/{id}', [CategoryController::class, 'search']);
 
 Route::get('/manageCategory', [CategoryController::class, 'manage'])->name('manage')->middleware('auth')->middleware('auth.role:Manager');
 
@@ -52,8 +53,8 @@ Route::delete('/deleteKeyboard/{id}', [KeyboardController::class, 'delete']);
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart')->middleware('auth')->middleware('auth.role:Customer');
 Route::post('/addCart/{id}', [CartController::class, 'addCart'])->middleware('auth')->middleware('auth.role:Customer');
-Route::put('/updateCart/{id}', [CartController::class, 'updateCart']);
-Route::delete('/deleteCart', [CartController::class, 'deleteCart']);
+Route::put('/updateCart/{cartId}/keyboard/{keyboardId}', [CartController::class, 'updateCart']);
+Route::delete('/deleteCart', [CartController::class, 'deleteCart'])->name('deleteCart');
 
 Route::get('/transaction', [TransactionController::class, 'index'])->middleware('auth')->middleware('auth.role:Customer');
 

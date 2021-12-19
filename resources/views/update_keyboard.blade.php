@@ -28,9 +28,7 @@
                                 @endforeach
                             </select>
                             @if($errors->first('category'))
-                                <div class="alert alert-danger mt-2 p-1">
-                                    {{ $errors->first('category') }}
-                                </div>
+                                <span class="text-danger">{{ $errors->first('category') }}</span>
                             @endif
                         </div>
                     </div>
@@ -41,9 +39,7 @@
                         <div class="col-7">
                             <input type="text" class="form-control" id="txtName" name="name" value="{{ $keyboard->name }}">
                             @if($errors->first('name'))
-                                <div class="alert alert-danger mt-2 p-1">
-                                    {{ $errors->first('name') }}
-                                </div>
+                                <span class="text-danger">{{ $errors->first('name') }}</span>
                             @endif
                         </div>
                     </div>
@@ -54,9 +50,7 @@
                         <div class="col-7">
                             <input type="number" class="form-control" id="txtPrice" name="price" value="{{ $keyboard->price }}">
                             @if($errors->first('price'))
-                                <div class="alert alert-danger mt-2 p-1">
-                                    {{ $errors->first('price') }}
-                                </div>
+                                <span class="text-danger">{{ $errors->first('price') }}</span>
                             @endif
                         </div>
                     </div>
@@ -67,9 +61,7 @@
                         <div class="col-7">
                             <textarea class="form-control" id="txtDescription" name="description" rows="5">{{ $keyboard->description }}</textarea>
                             @if($errors->first('description'))
-                                <div class="alert alert-danger mt-2 p-1">
-                                    {{ $errors->first('description') }}
-                                </div>
+                                <span class="text-danger">{{ $errors->first('description') }}</span>
                             @endif
                         </div>
                     </div>
@@ -80,9 +72,7 @@
                         <div class="col-7">
                             <input class="form-control" type="file" id="fileImage" name="image">
                             @if($errors->first('image'))
-                                    <div class="alert alert-danger mt-2 p-1">
-                                        {{ $errors->first('image') }}
-                                    </div>
+                                <span class="text-danger">{{ $errors->first('image') }}</span>
                             @endif
                         </div>
                     </div>

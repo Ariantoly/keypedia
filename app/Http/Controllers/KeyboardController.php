@@ -82,7 +82,7 @@ class KeyboardController extends Controller
 
         $keyboard->save();
 
-        return redirect()->route('category');
+        return redirect('category/'.intval($request->category));
     }
 
     public static function delete($id) {

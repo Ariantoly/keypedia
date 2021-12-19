@@ -19,7 +19,7 @@
                     <div class="mb-3">
                         <p class="fs-4 fw-bold">{{ $c->name }}</p>
                         <p>Subtotal: ${{ $c->keyboard->price * $c->quantity }}</p>
-                        <form action="/updateCart/{{ $c->cart_id }}" method="post">
+                        <form action="/updateCart/{{ $c->cart_id }}/keyboard/{{ $c->keyboard->id }}" method="post">
                             @csrf
                             @method('put')
                             <div class="row gx-5 align-items-center mb-3 mx-4">

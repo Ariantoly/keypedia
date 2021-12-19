@@ -10,7 +10,7 @@ class Cart extends Model
     use HasFactory;
 
     public function cartDetails() {
-        return $this->hasMany(CartDetail::class);
+        return $this->hasMany(CartDetail::class, 'cart_id', 'id');
     }
 
     public function user() {

@@ -5,14 +5,14 @@
 @section('content')
     <p class="fs-1 text-center m-0 py-2 px-0 bg-light rounded-2">{{ $category->name }}</p>
 
-    <form class="d-flex justify-content-center mt-4">
+    <form action="/category/keyboard/{{ $category->id }}"class="d-flex justify-content-center mt-4">
         <div class="col-10 pe-2">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search">
         </div>
         <div class="col-1 pe-2">
-            <select class="form-select"> 
-                <option value="1" selected>Name</option>
-                <option value="2">Price</option>
+            <select class="form-select" name="type"> 
+                <option value="name" selected>Name</option>
+                <option value="price">Price</option>
             </select>
         </div>
         <div class="col-auto">
@@ -21,11 +21,11 @@
     </form>
     
     <div class="mt-4">
-        @if (sizeof($category->keyboards) == 0)
+        @if (sizeof($keyboards) == 0)
             <p class="p-2 mx-3 bg-light rounded-2">There is not any keyboard with this category</p>
         @else
             <div class="cards row row-cols-1 row-cols-md-3 g-5 justify-content-center pt-4 mx-3">
-                @foreach ($category->keyboards as $k)
+                @foreach ($keyboards as $k)
                     <div class="col">
                         <a href="/keyboard/{{ $k->id }}" class="text-decoration-none">
                             <div class="card h-100 p-2 bg-light">
@@ -55,6 +55,9 @@
                     </div>
                 @endforeach
             </div>
+
+            {{ $keyboards->links() }}
+
         @endif
     </div>
 @endsection
