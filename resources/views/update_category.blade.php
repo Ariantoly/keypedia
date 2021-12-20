@@ -22,6 +22,9 @@
                         </div>
                         <div class="col-7">
                             <input type="text" class="form-control" id="txtName" name="name" value="{{ $category->name }}">
+                            @if($errors->first('name'))
+                                <span class="text-danger">{{ $errors->first('name') }}</span>
+                            @endif
                         </div>
                     </div>
                     <div class="row gx-4 align-items-center mb-3">
@@ -30,6 +33,9 @@
                         </div>
                         <div class="col-7">
                             <input class="form-control" type="file" id="fileImage" name="image">
+                            @if($errors->first('image'))
+                                <span class="text-danger">{{ $errors->first('image') }}</span>
+                            @endif
                         </div>
                     </div>
                     <div class="row gx-4 align-items-center">

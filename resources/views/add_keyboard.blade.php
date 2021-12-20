@@ -3,6 +3,12 @@
 @section('title', 'Add Keyboard')
     
 @section('content')
+    @if (Session::has('message'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ Session::get('message') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <form method="post" action="/addKeyboard" class="box bg-light shadow py-3 rounded-2" enctype="multipart/form-data">
         @csrf
         <div class="mx-4">
@@ -11,11 +17,6 @@
         <hr class="text-primary">
         <div class="px-4 mx-4">
             <div class="row g-5 align-items-center mb-3 mx-5">
-                {{-- @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <span>{{ $errors->first('category') }}</span>
-                    </div>
-                @endif --}}
                 <div class="col-4 text-end">
                     <label class="form-label">Category</label>
                 </div>
@@ -27,9 +28,7 @@
                         @endforeach
                     </select>
                     @if($errors->first('category'))
-                        <div class="alert alert-danger mt-2 p-1">
-                            {{ $errors->first('category') }}
-                        </div>
+                        <span class="text-danger">{{ $errors->first('category') }}</span>
                     @endif
                 </div>
             </div>
@@ -40,9 +39,7 @@
                 <div class="col-8">
                     <input type="text" class="form-control" id="txtName" name="name" value="{{ old('name') }}">
                     @if($errors->first('name'))
-                        <div class="alert alert-danger mt-2 p-1">
-                            {{ $errors->first('name') }}
-                        </div>
+                        <span class="text-danger">{{ $errors->first('name') }}</span>
                     @endif
                 </div>
             </div>
@@ -53,9 +50,7 @@
                 <div class="col-8">
                     <input type="number" class="form-control" id="txtPrice" name="price" value="{{ old('price') }}">
                     @if($errors->first('price'))
-                        <div class="alert alert-danger mt-2 p-1">
-                            {{ $errors->first('price') }}
-                        </div>
+                        <span class="text-danger">{{ $errors->first('price') }}</span>
                     @endif
                 </div>
             </div>
@@ -66,9 +61,7 @@
                 <div class="col-8">
                     <textarea class="form-control" id="txtDescription" name="description" rows="5">{{ old('description') }}</textarea>
                     @if($errors->first('description'))
-                        <div class="alert alert-danger mt-2 p-1">
-                            {{ $errors->first('description') }}
-                        </div>
+                        <span class="text-danger">{{ $errors->first('description') }}</span>
                     @endif
                 </div>
             </div>
@@ -79,9 +72,7 @@
                 <div class="col-8">
                     <input class="form-control" type="file" id="fileImage" name="image">
                     @if($errors->first('image'))
-                            <div class="alert alert-danger mt-2 p-1">
-                                {{ $errors->first('image') }}
-                            </div>
+                        <span class="text-danger">{{ $errors->first('image') }}</span>
                     @endif
                 </div>
             </div>

@@ -3,6 +3,12 @@
 @section('title', 'Detail Keyboard')
 
 @section('content')
+    @if (Session::has('message'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ Session::get('message') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <div class="box bg-light shadow py-3 rounded-2">
         <div class="mx-4">
             <h4>Detail Keyboard</h4>

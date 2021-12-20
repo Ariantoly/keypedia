@@ -25,10 +25,10 @@ class CategoryController extends Controller
         $search = $request->search;
         
         if(strcmp($request->type, 'name') == 0) {
-            $keyboards = $category->keyboards()->where('name', 'like', "%$search%")->paginate(8);
+            $keyboards = $category->keyboards()->where('name', 'like', "%$search%")->paginate(8)->withQueryString();
         }
         else {
-            $keyboards = $category->keyboards()->where('price', intval($request->search))->paginate(8);
+            $keyboards = $category->keyboards()->where('price', intval($request->search))->paginate(8)->withQueryString();
         }
 
         return view('category', ['categories' => $categories, 'category' => $category, 'keyboards' => $keyboards]);
@@ -68,7 +68,7 @@ class CategoryController extends Controller
 
         $category->save();
 
-        return redirect()->route('manage');
+        return redirect()->route('manage')->with('message', $category->name.' has been updated');
     }
 
     public static function delete($id) {

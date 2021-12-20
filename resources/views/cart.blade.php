@@ -19,7 +19,7 @@
                     <div class="mb-3">
                         <p class="fs-4 fw-bold">{{ $c->name }}</p>
                         <p>Subtotal: ${{ $c->keyboard->price * $c->quantity }}</p>
-                        <form action="/updateCart/{{ $c->cart_id }}/keyboard/{{ $c->keyboard->id }}" method="post">
+                        <form action="/updateCart/{{ $c->cart_id }}/keyboard/{{ $c->keyboard->id }}" method="POST">
                             @csrf
                             @method('put')
                             <div class="row gx-5 align-items-center mb-3 mx-4">
@@ -27,7 +27,7 @@
                                     <label for="txtQty" class="form-label">Quantity</label>
                                 </div>
                                 <div class="col-9">
-                                    <input type="number" class="form-control" id="txtQty" name="qty" value="{{ $c->quantity }}">
+                                    <input type="number" class="form-control" name="qty" id="qty{{ $c->keyboard->id }}" value="{{ $c->quantity }}">
                                     @if($errors->first('qty'))
                                         <span class="text-danger">{{ $errors->first('qty') }}</span>
                                     @endif

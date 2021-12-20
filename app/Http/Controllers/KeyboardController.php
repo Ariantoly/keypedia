@@ -52,7 +52,7 @@ class KeyboardController extends Controller
 
         $keyboard->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('message', $keyboard->name.' has been added');
     }
 
     public static function update(Request $request, $id) {
@@ -82,7 +82,7 @@ class KeyboardController extends Controller
 
         $keyboard->save();
 
-        return redirect('category/'.intval($request->category));
+        return redirect('category/'.$keyboard->category_id)->with('message', $keyboard->name.' has been updated');
     }
 
     public static function delete($id) {

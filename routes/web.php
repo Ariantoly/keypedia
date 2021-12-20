@@ -30,6 +30,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::get('/changePassword', [AuthController::class, 'showChangePasswordPage'])->middleware('auth');
+Route::post('/changePassword', [AuthController::class, 'changePassword'])->middleware('auth');
 
 Route::get('/category/{id}', [CategoryController::class, 'index']);
 Route::get('/category/keyboard/{id}', [CategoryController::class, 'search']);

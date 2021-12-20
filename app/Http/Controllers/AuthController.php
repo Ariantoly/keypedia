@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class AuthController extends Controller
 {
@@ -79,5 +80,20 @@ class AuthController extends Controller
         $categories = Category::all();
         
         return view('change_password', ['categories' => $categories]);
+    }
+
+    public static function changePassword(Request $request) {
+        $request->validate([
+            'password' => 'required|current_password',
+            'newPassword' => 'required|min:8|confirmed',
+            'newPassword_confirmation' => 'required'
+        ]);
+
+        $user = User::find(Auth::user()->id);
+        $user->password = Hash::make($request->newPassword);
+
+        $user->save();
+
+        return static::logout();
     }
 }

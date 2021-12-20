@@ -16,6 +16,9 @@
                 </div>
                 <div class="col-7">
                     <input type="password" class="form-control" id="txtPassword" name="password">
+                    @if($errors->first('password'))
+                        <span class="text-danger">{{ $errors->first('password') }}</span>
+                    @endif
                 </div>
             </div>
             <div class="row gx-5 align-items-center mb-3 mx-5">
@@ -24,6 +27,9 @@
                 </div>
                 <div class="col-7">
                     <input type="password" class="form-control" id="txtNewPassword" name="newPassword">
+                    @if($errors->first('newPassword'))
+                        <span class="text-danger">{{ $errors->first('newPassword') }}</span>
+                    @endif
                 </div>
             </div>
             <div class="row gx-5 align-items-center mb-3 mx-5">
@@ -31,7 +37,10 @@
                     <label for="txtConfNewPassword" class="form-label">Confirm New Password</label>
                 </div>
                 <div class="col-7">
-                    <input type="password" class="form-control" id="txtConfNewPassword" name="confNewPass">
+                    <input type="password" class="form-control" id="txtConfNewPassword" name="newPassword_confirmation">
+                    @if($errors->first('newPassword_confirmation'))
+                        <span class="text-danger">{{ $errors->first('newPassword_confirmation') }}</span>
+                    @endif
                 </div>
             </div>
             <div class="row gx-5 align-items-center mx-5">

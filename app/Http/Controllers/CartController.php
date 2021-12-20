@@ -37,7 +37,7 @@ class CartController extends Controller
 
         $cartDetail->save();
         
-        return redirect()->back();
+        return redirect()->back()->with('message', $cartDetail->keyboard->name.' has been added to cart');
     }
 
     public static function updateCart(Request $request, $cartId, $keyboardId) {

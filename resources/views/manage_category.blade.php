@@ -4,12 +4,19 @@
 
 @section('content')
     <p class="fs-1 text-center m-0 py-2 px-0 bg-light rounded-2">Manage Categories</p>
+
+    @if (Session::has('message'))
+        <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
+            {{ Session::get('message') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     
     <div class="mt-4">
         <div class="cards row row-cols-1 row-cols-md-3 g-5 justify-content-center pt-4 mx-3">
             @foreach ($categories as $c)
                 <div class="col">
-                    <a href="/keyboard" class="text-decoration-none">
+                    <a href="/category/{{ $c->id }}" class="text-decoration-none">
                         <div class="card h-100 p-2 bg-light">
                             <div>
                                 <img src="{{ Storage::url($c->image) }}" class="card-img-top" alt="Keyboard">

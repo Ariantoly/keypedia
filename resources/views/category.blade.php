@@ -19,12 +19,19 @@
             <button class="btn btn-primary" type="submit">Search</button>
         </div>
     </form>
+
+    @if (Session::has('message'))
+        <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
+            {{ Session::get('message') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     
     <div class="mt-4">
         @if (sizeof($keyboards) == 0)
             <p class="p-2 mx-3 bg-light rounded-2">There is not any keyboard with this category</p>
         @else
-            <div class="cards row row-cols-1 row-cols-md-3 g-5 justify-content-center pt-4 mx-3">
+            <div class="cards row row-cols-1 row-cols-md-3 g-5 justify-content-center py-4 mx-3">
                 @foreach ($keyboards as $k)
                     <div class="col">
                         <a href="/keyboard/{{ $k->id }}" class="text-decoration-none">
@@ -56,7 +63,9 @@
                 @endforeach
             </div>
 
-            {{ $keyboards->links() }}
+            <div class="d-flex justify-content-end">
+                {{ $keyboards->links() }}
+            </div>
 
         @endif
     </div>
