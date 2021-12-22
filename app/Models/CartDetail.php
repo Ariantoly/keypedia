@@ -9,7 +9,7 @@ class CartDetail extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'cart_id';
+    protected $primaryKey = 'keyboard_id';
 
     public function cart() {
         return $this->belongsTo(Cart::class);

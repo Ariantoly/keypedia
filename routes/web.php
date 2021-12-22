@@ -57,6 +57,7 @@ Route::post('/addCart/{id}', [CartController::class, 'addCart'])->middleware('au
 Route::put('/updateCart/{cartId}/keyboard/{keyboardId}', [CartController::class, 'updateCart']);
 Route::delete('/deleteCart', [CartController::class, 'deleteCart'])->name('deleteCart');
 
-Route::get('/transaction', [TransactionController::class, 'index'])->middleware('auth')->middleware('auth.role:Customer');
+Route::get('/checkout', [CartController::class, 'checkout'])->middleware('auth')->middleware('auth.role:Customer');
 
-Route::get('/transactionDetail', [TransactionController::class, 'getTransaction'])->middleware('auth')->middleware('auth.role:Customer');
+Route::get('/transaction', [TransactionController::class, 'index'])->middleware('auth')->middleware('auth.role:Customer');
+Route::get('/transaction/{id}', [TransactionController::class, 'getTransaction'])->middleware('auth')->middleware('auth.role:Customer');

@@ -18,6 +18,6 @@ class Keyboard extends Model
     }
 
     public function transactionDetails() {
-        return $this->belongsToMany(TransactionDetail::class);
+        return $this->belongsToMany(TransactionDetail::class, 'transaction_details', 'keyboard_id', 'id');
     }
 }

@@ -3,6 +3,13 @@
 @section('title', 'My Cart')
 
 @section('content')
+    @if (Session::has('message'))
+        <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
+            {{ Session::get('message') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <div class="box bg-light shadow py-3 rounded-2">
         <div class="mx-4">
             <h4>My Cart</h4>
@@ -27,9 +34,12 @@
                                     <label for="txtQty" class="form-label">Quantity</label>
                                 </div>
                                 <div class="col-9">
-                                    <input type="number" class="form-control" name="qty" id="qty{{ $c->keyboard->id }}" value="{{ $c->quantity }}">
-                                    @if($errors->first('qty'))
-                                        <span class="text-danger">{{ $errors->first('qty') }}</span>
+                                    <input type="number" class="form-control" name="qty{{ $c->keyboard->id }}" value="{{ $c->quantity }}">
+                                    @php
+                                        $name = 'qty'.$c->keyboard->id;
+                                    @endphp
+                                    @if($errors->first($name))
+                                        <span class="text-danger">{{ $errors->first($name) }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -45,7 +55,7 @@
                     </div>
                 </div>
             @endforeach
-            <form action="/checkout/{{ $cart->id }}" method="post">
+            <form action="/checkout" method="get">
                 @csrf
                 <div class="d-flex justify-content-center mb-3">
                     <button type="submit" class="btn btn-primary">Checkout</button>

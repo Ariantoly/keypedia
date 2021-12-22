@@ -16,21 +16,23 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row"><img src="/images/keyboard.jpg" alt="Keyboard" class="img-mini"></th>
-                    <td>AKKO 3061 World Tour Tokyo</td>
-                    <td>$158</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <th scope="row"><img src="/images/keyboard.jpg" alt="Keyboard" class="img-mini"></th>
-                    <td>AKKO 3061 World Tour Tokyo</td>
-                    <td>$158</td>
-                    <td>2</td>
-                </tr>
+                @php
+                    $total = 0;
+                @endphp
+                @foreach ($transactions as $t)
+                    <tr>
+                        <th scope="row"><img src="{{ Storage::url($t->keyboard->image) }}" alt="{{ $t->keyboard->name }}" class="img-mini"></th>
+                        <td>{{ $t->keyboard->name }}</td>
+                        <td>${{ $t->keyboard->price * $t->quantity }}</td>
+                        <td>{{ $t->quantity }}</td>
+                        @php
+                            $total += $t->keyboard->price * $t->quantity;
+                        @endphp
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
 
-    <p class="fw-bold text-end">Total Price: $158</p>
+    <p class="fw-bold text-end">Total Price: ${{ $total }}</p>
 @endsection

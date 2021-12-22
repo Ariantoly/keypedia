@@ -74,10 +74,10 @@ class CategoryController extends Controller
     public static function delete($id) {
         $category = Category::find($id);
 
-        // Storage::delete('public/'.$category->image);
+        Storage::delete('public/'.$category->image);
 
-        // $category->delete();
+        $category->delete();
 
-        // return redirect()->back();
+        return redirect()->back();
     }
 }

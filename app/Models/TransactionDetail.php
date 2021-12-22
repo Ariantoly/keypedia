@@ -15,7 +15,7 @@ class TransactionDetail extends Model
         return $this->belongsTo(TransactionHeader::class);
     }
 
-    public function product() {
-        return $this->hasOne(Keyboard::class);
+    public function keyboard() {
+        return $this->hasOne(Keyboard::class, 'id', 'keyboard_id');
     }
 }

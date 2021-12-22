@@ -88,10 +88,10 @@ class KeyboardController extends Controller
     public static function delete($id) {
         $keyboard = Keyboard::find($id);
 
-        // Storage::delete('public/'.$keyboard->image);
+        Storage::delete('public/'.$keyboard->image);
 
-        // $keyboard->delete();
+        $keyboard->delete();
 
-        // return redirect()->back();
+        return redirect()->back();
     }
 }
