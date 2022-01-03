@@ -32,7 +32,7 @@ class AuthController extends Controller
             return redirect()->route('home');
         }
 
-        return back()->with('error', 'Login Failed! Wrong Credentials!');
+        return back()->with('error', 'Login Failed! Incorrect Email or Password!');
     }
 
     public static function logout() {
